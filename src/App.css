@@ -1,7 +1,7 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -18,8 +18,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.prueba{
-}
+
 
 @keyframes logo-spin {
   from {
