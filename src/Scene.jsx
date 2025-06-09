@@ -3,7 +3,8 @@ import { useRef, useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 
 function MclarenModel() {
-  const { scene } = useGLTF('/renders/mclaren_mp45__formula_1.glb');
+  // Usa ruta relativa a public para producción y desarrollo
+  const { scene } = useGLTF(import.meta.env.BASE_URL + 'renders/mclaren_mp45__formula_1.glb');
   const ref = useRef();
   const [scale, setScale] = useState([0.5, 0.5, 0.5]);
 

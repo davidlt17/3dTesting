@@ -3,7 +3,8 @@ import { useGLTF, OrbitControls } from '@react-three/drei';
 import { useRef } from 'react';
 
 function V8EngineModel() {
-  const { scene } = useGLTF('/renders/v8_engine.glb');
+  // Usa ruta relativa a public para producción y desarrollo
+  const { scene } = useGLTF(import.meta.env.BASE_URL + 'renders/v8_engine.glb');
   const ref = useRef();
   useFrame(() => {
     if (ref.current) {
