@@ -16,7 +16,7 @@ function V8EngineModel() {
 
 export default function MotorHistory() {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center gap-8 p-8 bg-white rounded shadow mt-16">
+    <section className="flex flex-col lg:flex-row items-center justify-center gap-8 p-8 bg-white rounded shadow ">
       {/* Apartado de historia */}
       <div className="max-w-xl">
         <h2 className="text-3xl font-bold mb-4 font-serif">Historia del Motor</h2>
