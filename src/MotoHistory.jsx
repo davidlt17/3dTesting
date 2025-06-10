@@ -31,7 +31,7 @@ function PiaggioSiModel() {
     );
   }
 
-  return <primitive ref={ref} object={scene} scale={[0.02, 0.02, 0.02]} position={[0, 0, 0]} />;
+  return <primitive ref={ref} object={scene} scale={[0.025, 0.025, 0.025]} position={[0, 0, 0]} />;
 }
 
 export default function MotoHistory() {
@@ -49,16 +49,16 @@ export default function MotoHistory() {
         </p>
       </div>
       {/* Render 3D de la scooter */}
-      <div className="w-full h-[300px] md:w-[700px] md:h-[400px] z-50 ">
+      <div className="w-full h-[300px] md:w-[700px] md:h-[500px] z-50 ">
         <Canvas
           className="w-full h-full z-50"
-          camera={{ position: [0, 2, 5], fov: 50 }} // Cámara explícita
+          camera={{ position: [0, 2, 8], fov: 50 }} // Cámara explícita
         >
           <ambientLight intensity={1} />
           <directionalLight position={[0, 10, 5]} intensity={1} />
           <pointLight position={[2, 5, 5]} intensity={0.5} />
           <Environment preset="studio" intensity={0.5} /> {/* Iluminación ambiental */}
-          <PiaggioSiModel className=" z-50"/>
+          <PiaggioSiModel />
           <OrbitControls enablePan={false} minDistance={3} maxDistance={10} />
         </Canvas>
       </div>

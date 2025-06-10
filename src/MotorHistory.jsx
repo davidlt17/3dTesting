@@ -11,7 +11,7 @@ function V8EngineModel() {
       ref.current.rotation.y += 0.001; // Rotación muy lenta
     }
   });
-  return <primitive ref={ref} object={scene} scale={[5, 5, 5]} position={[0, 0, 0]} />;
+  return <primitive ref={ref} object={scene} scale={[8, 8, 8]} position={[0, 0, 0]} />;
 }
 
 export default function MotorHistory() {
@@ -33,7 +33,8 @@ export default function MotorHistory() {
           <directionalLight position={[0, 10, 5]} intensity={1.5} />
           <pointLight position={[2, 5, 5]} intensity={1} />
           <V8EngineModel />
-          <OrbitControls /> {/* Permite al usuario girar el modelo */}
+          <OrbitControls enablePan={false} minDistance={4} maxDistance={8} />
+
         </Canvas>
       </div>
     </section>
