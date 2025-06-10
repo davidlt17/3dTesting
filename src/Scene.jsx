@@ -15,6 +15,7 @@ function MclarenModel({ parentHeight }) {
   const { scene, error } = useGLTF('/renders/mclaren_mp45__formula_1.glb');
   const ref = useRef();
   const [scale, setScale] = useState([0.5, 0.5, 0.5]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640); // Tailwind's sm breakpoint
 
   useEffect(() => {
     if (error) {
@@ -31,11 +32,17 @@ function MclarenModel({ parentHeight }) {
       }
     });
 
-    // Escala dinámica basada en la altura del div padre
+    // Detectar cambios en tamaño de pantalla
     const handleResize = () => {
       const baseScale = 1.5;
-      const heightFactor = parentHeight ? parentHeight / 800 : 0.5; // Normalizar según altura del div
-      setScale([baseScale * heightFactor, baseScale * heightFactor, baseScale * heightFactor]);
+      const heightFactor = parentHeight ? parentHeight / 800 : 0.5;
+      const mobileScaleFactor = window.innerWidth < 640 ? 0.6 : 1; // 20% menor en móviles
+      setIsMobile(window.innerWidth < 640);
+      setScale([
+        baseScale * heightFactor * mobileScaleFactor,
+        baseScale * heightFactor * mobileScaleFactor,
+        baseScale * heightFactor * mobileScaleFactor,
+      ]);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -98,7 +105,7 @@ function Scene() {
         const parent = containerRef.current;
         canvasRef.current.camera.aspect = parent.clientWidth / parent.clientHeight;
         canvasRef.current.camera.updateProjectionMatrix();
-        setParentHeight(parent.clientHeight); // Actualizar altura del div padre
+        setParentHeight(parent.clientHeight);
       }
     };
     handleResize();
@@ -111,8 +118,7 @@ function Scene() {
   }, []);
 
   return (
-    <div className="relative w-full h-[80vh] z-20 " ref={containerRef}>
-      
+    <div className="relative w-full h-[80vh] z-20" ref={containerRef}>
       <Canvas
         ref={canvasRef}
         gl={{
